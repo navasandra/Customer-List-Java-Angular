@@ -1,0 +1,40 @@
+body {
+  padding-left: 5em;
+  padding-right: 5em;
+  background-color: rgb(239, 239, 239);
+  margin: 0;
+}
+
+/* matches selection and hover colour */
+.p-datatable-tbody > tr.p-highlight {
+  background-color: #efefef !important;
+  color: #212529 !important;
+}
+
+.p-datatable-tbody > tr:hover {
+  background-color: #efefef !important;
+}
+
+/* removes the blue frame once specific row is selected */
+.p-datatable-tbody > tr:focus {
+  outline: 0 !important;
+}
+
+.p-datatable-header {
+  display: flex;
+  justify-content: space-between;
+}
+.app-outer-container {
+  background-color: white;
+  padding-bottom: 0.2em;
+}
+
+.app-inner-container {
+  background-color: white;
+  margin: 0 0.5em;
+}
+.app-header-title {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  margin: 0;
+}

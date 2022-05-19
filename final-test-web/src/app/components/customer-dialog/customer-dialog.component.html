@@ -1,0 +1,86 @@
+<p-dialog
+  header="Customer Information"
+  [(visible)]="display"
+  (onHide)="closeDialog()"
+>
+  <form #customerForm="ngForm">
+    <div class="input-group">
+      <label for="name">Name:</label> <br />
+      <input
+        class="p-inputtext"
+        id="name"
+        type="text"
+        [(ngModel)]="customer.name"
+        name="name"
+        required="name"
+        placeholder="Name"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="surname">Surname:</label> <br />
+      <input
+        class="p-inputtext"
+        id="surname"
+        type="text"
+        [(ngModel)]="customer.surname"
+        name="surname"
+        required="surname"
+        placeholder="Surname"
+      />
+      <br />
+    </div>
+
+    <div class="input-group">
+      <label for="birthDate">Birth date:</label> <br />
+      <input
+        class="p-inputtext"
+        id="birthDate"
+        type="text"
+        [(ngModel)]="customer.birthDate"
+        name="birthDate"
+        required="birthDate"
+        placeholder="YYYY-MM-DD"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="phoneNumber">Phone number:</label> <br />
+      <input
+        class="p-inputtext"
+        id="phoneNumber"
+        type="text"
+        [(ngModel)]="customer.phoneNumber"
+        name="phoneNumber"
+        required="phoneNumber"
+        placeholder="XXXXXXXXX"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="email=">Email:</label> <br />
+      <input
+        class="p-inputtext"
+        id="email"
+        type="text"
+        [(ngModel)]="customer.email"
+        name="email"
+        required="email"
+        placeholder="example@email.com"
+      />
+    </div>
+  </form>
+
+  <!-- example shows the dialog without footer when it's used for only showing the customer info; leaving the dialog with footer only hiding the button (looks somewhat nicer)-->
+  <p-footer>
+    <div [hidden]="customer.id != null">
+      <p-button
+        type="button"
+        label="Add"
+        (click)="saveNewCustomer()"
+        [disabled]="!customerForm.form.valid"
+      ></p-button>
+      <!-- button is made to be disabled until all of the form fields are filled -->
+    </div>
+  </p-footer>
+</p-dialog>

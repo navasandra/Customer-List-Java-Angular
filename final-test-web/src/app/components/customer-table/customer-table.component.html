@@ -1,0 +1,59 @@
+<p-table
+  #dtCustomer
+  [value]="customers!"
+  [paginator]="true"
+  [rows]="20"
+  [globalFilterFields]="[
+    'id',
+    'name',
+    'surname',
+    'birthDate',
+    'email',
+    'phoneNumber'
+  ]"
+  selectionMode="single"
+  [(selection)]="customer"
+>
+  <ng-template pTemplate="caption">
+    <input
+      type="text"
+      class="p-inputtext"
+      placeholder="Search keyword"
+      (input)="dtCustomer.filterGlobal($any($event.target).value, 'contains')"
+    />
+    <p-button type="button" label="Add" (click)="addNewCustomer()"></p-button>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Birth date</th>
+      <th>Telephone number</th>
+      <th>Email</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-customer>
+    <tr
+      [pSelectableRow]="customer"
+      (click)="selectCustomer(customer)"
+      class="p-selectablerow"
+    >
+      <td>{{ customer.id }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.surname }}</td>
+      <td>{{ customer.birthDate }}</td>
+      <td>{{ customer.phoneNumber }}</td>
+      <td>{{ customer.email }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<div *ngIf="customer">
+  <app-customer-dialog
+    [customer]="customer"
+    (saveNewCustomerEvent)="saveNewCustomer($event)"
+    (closeDialogEvent)="closeDialog()"
+  >
+  </app-customer-dialog>
+</div>
