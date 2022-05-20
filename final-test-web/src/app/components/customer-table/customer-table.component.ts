@@ -45,5 +45,6 @@ export class CustomerTableComponent implements OnInit {
 
   closeDialog() {
     this.customer = null;
+    this.getCustomers();
   }
 }
